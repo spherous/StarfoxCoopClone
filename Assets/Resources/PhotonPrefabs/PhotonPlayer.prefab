@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6059158231926287624}
   - component: {fileID: 5031406563806471683}
   - component: {fileID: 7039959588742951875}
-  - component: {fileID: 643137534913626244}
   m_Layer: 8
   m_Name: PhotonPlayer
   m_TagString: Untagged
@@ -84,22 +83,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6644cdb6f3ddd448f6bc4a33dfc113, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 18
   photonView: {fileID: 6059158231926287624}
-  followMouseSpeed: 2
   ShootingForce: 1000
---- !u!114 &643137534913626244
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461253540525706046}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efbd2be7226ae1a4591695e01a55ebb4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 8566328271530381692}
+  projectile: {fileID: 3909230759486178445, guid: 78cea454a2b550944886b2cbd862dcc6,
+    type: 3}
+  followMouseSpeed: 2
 --- !u!1 &8608725818647892233
 GameObject:
   m_ObjectHideFlags: 0

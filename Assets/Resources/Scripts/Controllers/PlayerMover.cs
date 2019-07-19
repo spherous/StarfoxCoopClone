@@ -1,42 +1,37 @@
 ﻿using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 using System.IO;
 
 public class PlayerMover : MonoBehaviour {
 
+    public float speed = 18f;
     public PhotonView photonView;
     Camera cam;
-    private Vector3 screenPoint;
-    public float followMouseSpeed= 0.1f;
-    public float ShootingForce = 100f;
     private string projectilePath = Path.Combine("PhotonPrefabs", "Projectile");
+
 
     public void Setup(Camera mainCamera)
     {
         cam = mainCamera;
     }
+    public float ShootingForce = 100f;
     private void Update() {
         if(photonView.IsMine)
         {
             Movement();
             ClampPosition();
-
-            //shooting
-            if (Input.GetMouseButtonDown(0))
-                FireProjectile();
+            if (Input.GetMouseButtonDown(0)) {
+                GameObject bullet = PhotonNetwork.Instantiate(projectilePath, transform.position, Quaternion.identity) as GameObject;
+                bullet.transform.LookAt(cam.ScreenToWorldPoint(screenPoint));
+                bullet.GetComponent<Rigidbody>().AddForce(transform.forward * ShootingForce);
+                //TODO Cleanup that needs to be pooled
+                Destroy(bullet, 5f);
+            }
         }
     }
 
-    private void FireProjectile ()
-    {
-        // Pool bullets
-        GameObject bullet = PhotonNetwork.Instantiate(projectilePath, transform.position, Quaternion.identity) as GameObject;
-        bullet.transform.LookAt(cam.ScreenToWorldPoint(screenPoint));
-        bullet.GetComponent<Rigidbody>().AddForce(transform.forward * ShootingForce);
-        //TODO Cleanup that needs to be pooled
-        Destroy(bullet, 5f);
-    }
-
+    public GameObject projectile;
     private void ClampPosition()
     {
         Vector3 pos = cam.WorldToViewportPoint(transform.position);
@@ -44,6 +39,8 @@ public class PlayerMover : MonoBehaviour {
         pos.y = Mathf.Clamp01(pos.y);
         transform.position = cam.ViewportToWorldPoint(pos);
     }
+    private Vector3 screenPoint;
+    public float followMouseSpeed= 0.1f;
     private void Movement ()
     {
         //Get Mouse Positions
@@ -56,5 +53,8 @@ public class PlayerMover : MonoBehaviour {
         //set the Look at position to be 50f in front of the ship
         screenPoint.z = 50f;
         transform.LookAt(cam.ScreenToWorldPoint(screenPoint));
+        //float x = Input.mousePosition.x;
+      //  float y = Input.mousePosition.y;
+       // transform.localPosition += new Vector3(x, y, 0) * speed * Time.deltaTime;
     }
 }

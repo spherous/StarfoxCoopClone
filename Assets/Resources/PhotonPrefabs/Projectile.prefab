@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2490351812768044124}
   - component: {fileID: -2529575058340077662}
   - component: {fileID: -3075010352061401610}
-  - component: {fileID: -4910659397171468311}
+  - component: {fileID: -7958955833153620538}
   m_Layer: 9
   m_Name: Projectile
   m_TagString: Projectile
@@ -126,8 +126,8 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
+  Synchronization: 1
+  OwnershipTransfer: 1
   ObservedComponents:
   - {fileID: -3075010352061401610}
   viewIdField: 0
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
---- !u!114 &-4910659397171468311
+--- !u!114 &-7958955833153620538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,6 +157,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3909230759486178445}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7dcf366d41b41234b9333968004178ee, type: 3}
+  m_Script: {fileID: 11500000, guid: e20574f3c23e5b949b053aabe33abfa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
