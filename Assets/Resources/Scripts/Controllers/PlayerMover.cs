@@ -26,7 +26,7 @@ public class PlayerMover : MonoBehaviour {
                 bullet.transform.LookAt(cam.ScreenToWorldPoint(screenPoint));
                 bullet.GetComponent<Rigidbody>().AddForce(transform.forward * ShootingForce);
                 //TODO Cleanup that needs to be pooled
-                Destroy(bullet, 5f);
+                //Destroy(bullet, 5f);
             }
         }
     }
